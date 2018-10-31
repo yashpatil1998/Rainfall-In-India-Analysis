@@ -18,16 +18,6 @@ nrow(andaman.data)
 jai.maharashtra <- subset(clean.dataset, clean.dataset$SUBDIVISION == "MADHYA MAHARASHTRA")
 View(jai.maharashtra)
 
-monthly.rain <- c(0,0,0,0,0,0,0,0,0,0,0,0)
-yearly.rain <- c(1:10)
-color <- rainbow(10)
-for(row.year in 1:100) {
-  for (jai.row in 1:12) {
-    monthly.rain[jai.row] <- jai.maharashtra[row.year * 10,c(2+jai.row)]
-  }
-  lines(monthly.rain, col = color[row.year], xaxt = "n")
-}
-axis(side = 1,at = 1:12, labels = c("JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"))
 
 ###########################################################################
 
@@ -62,8 +52,6 @@ bengal1915 <- bengal1915[,c("JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP
 bengal2015 <- bengal2015[,c("JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC")]
 tbengal2015 <- as.data.frame(t(bengal2015))
 tbengal1915 <- as.data.frame(t(bengal1915))
-barplot(tbengal1915$`2637` ,names.arg = months,ylim = c(0,750),col = rainbow(15),
-        xlab = "Months", ylab = "Rainfall")
 barplot(tbengal2015$`667` ,names.arg = months,ylim = c(0,700),col = rainbow(15),
         xlab = "Months", ylab = "Rainfall")
 
